@@ -62,9 +62,9 @@ Start Node | Alphabet | Destination Node
 Several test cases are given in *inputs* folder.
 
 ## Testing app with custom automata
-Edit nfa.file file, add your graph as shown above.  
+Edit *nfa.file* file, add your graph as shown above.  
 Run application.    
-After compiling, the NFA and its according DFA will be drawn  
+After compiling, the NFA and its according DFA will be drawn.
 
 ## Notice:  
 The nodes should be named from 0 to n, otherwise an exception will be thrown.  
