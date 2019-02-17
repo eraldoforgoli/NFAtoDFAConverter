@@ -46,9 +46,11 @@ The second line shows the start node.
 The last line shows the final node (multiple values accepted too)  
 The other lines show transition states, for example:
 0 a 0 -> from node a, given input 0 > state goes to node 1
-Start Node| Alphabet | Destination Node  
------------- | ------------- | -------------  
+
+Start Node | Alphabet | Destination Node
+------------ | ------------- | -------------
 0 | a | 1
+0 | b | 0
 
 To test app: 
 Edit nfa.file file, add your graph as shown above.  
