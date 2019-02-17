@@ -57,7 +57,8 @@ The first line should always contain the number of nodes you wish to add, otherw
 The last line should always specify the accepting state/s.  
 
 ## Example
-See the example below to understand how the algorithm works: https://www.geeksforgeeks.org/theory-of-computation-conversion-from-nfa-to-dfa/
+See the example below to understand how the algorithm works:  
+https://www.geeksforgeeks.org/theory-of-computation-conversion-from-nfa-to-dfa/
 ## Contributing
 Pull requests are welcome. 
 
