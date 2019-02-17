@@ -25,7 +25,7 @@ Run As Java Application
 
 ```
 ## Application inputs
-Application gets the inputs from nfa.file file  
+Application gets the inputs from *nfa.file* file, which holds all data about NFA automata.  
 example nfa.file inputs: 
 ```
 4
