@@ -21,10 +21,11 @@ Step 4: Final state of DFA will be all states with contain F (final states of NF
 
 git clone https://github.com/eraldoforgoli/NFAtoDFAConverter
 import project to your workspace
+Run As Java Application
 
 ```
 ## Application inputs
-Application gets the input from nfa.file file  
+Application gets the inputs from nfa.file file  
 example nfa.file inputs: 
 ```
 4
@@ -57,7 +58,8 @@ Start Node | Alphabet | Destination Node
 3 | a | 1
 3 | b | 2
 
-0 a 0 -> from node a, given input 0 > state goes to node 1
+0 a 0 -> from node a, given input 0 > state goes to node 1  
+Several test cases are given in inputs folder.
 
 ## Testing app with custom automata
 Edit nfa.file file, add your graph as shown above.  
