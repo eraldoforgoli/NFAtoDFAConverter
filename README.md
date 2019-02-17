@@ -50,6 +50,12 @@ Edit nfa.file file, add your graph as shown above.
 Run application.    
 After compiling, the NFA and its according DFA will be drawn  
 
+## Notice:  
+The nodes should be named from 0 to n.  
+As alphabet you can use any character.  
+The first line should always contain the number of nodes you wish to add, otherwise an exception will be thrown.  
+The last line should always specify the accepting state/s.  
+
 ## Contributing
 Pull requests are welcome. 
 
