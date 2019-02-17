@@ -45,6 +45,10 @@ The last line shows the final node (multiple values accepted too)
 The other lines show transition states, for example:
 0 a 0 -> from node a, given input 0 > state goes to node 1
 
+To test app: 
+Edit nfa.file file, add your graph as shows above.  
+Run application.    
+After compiling, the NFA and its according DFA will be drawn  
 
 ## Contributing
 Pull requests are welcome. 
