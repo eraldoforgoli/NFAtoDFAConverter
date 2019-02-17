@@ -59,7 +59,7 @@ Start Node | Alphabet | Destination Node
 3 | b | 2
 
 0 a 0 -> from node a, given input 0 > state goes to node 1  
-Several test cases are given in inputs folder.
+Several test cases are given in *inputs* folder.
 
 ## Testing app with custom automata
 Edit nfa.file file, add your graph as shown above.  
