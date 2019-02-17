@@ -42,7 +42,11 @@ final 3
 
 
 The first line represents the number of states.  
+
 The second line shows the start node.   
+Start Node |
+------------ |
+0 
 The last line shows the final node (multiple values accepted too)  
 The other lines show transition states, for example:
 0 a 0 -> from node a, given input 0 > state goes to node 1
