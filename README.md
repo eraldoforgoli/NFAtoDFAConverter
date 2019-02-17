@@ -47,7 +47,7 @@ The last line shows the final node (multiple values accepted too)
 The other lines show transition states, for example:
 0 a 0 -> from node a, given input 0 > state goes to node 1
 Start Node| Alphabet | Destination Node
------------- | -------------
+------------ | ------------- | ------------- 
 0 | a | 1
 
 To test app: 
