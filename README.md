@@ -49,8 +49,14 @@ The other lines show transition states, for example:
 
 Start Node | Alphabet | Destination Node
 ------------ | ------------- | -------------
-0 | a | 1
-0 | b | 0
+0 | a | 0
+0 | b | 1
+1 | a | 2
+1 | b | 1
+2 | a | 1
+2 | b | 2
+3 | a | 1
+3 | b | 2
 
 To test app: 
 Edit nfa.file file, add your graph as shown above.  
