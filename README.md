@@ -22,9 +22,9 @@ Step 4: Final state of DFA will be all states with contain F (final states of NF
 git clone https://github.com/eraldoforgoli/NFAtoDFAConverter
 import project to your workspace
 
-Application gets the input from nfa file 
 ```
-
+## Application inputs
+Application gets the input from nfa.file file  
 example nfa.file inputs: 
 ```
 4
