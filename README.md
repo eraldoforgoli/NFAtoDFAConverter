@@ -46,7 +46,7 @@ The other lines show transition states, for example:
 0 a 0 -> from node a, given input 0 > state goes to node 1
 
 To test app: 
-Edit nfa.file file, add your graph as shows above.  
+Edit nfa.file file, add your graph as shown above.  
 Run application.    
 After compiling, the NFA and its according DFA will be drawn  
 
