@@ -39,7 +39,13 @@ start 0
 3 b 2
 final 3
 ```
+
+
 The first line represents the number of states.  
+
+Start Node| Node Number
+------------ | -------------
+start | Node Number
 The second line shows the start node.   
 The last line shows the final node (multiple values accepted too)  
 The other lines show transition states, for example:
