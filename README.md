@@ -15,7 +15,8 @@ Step 2: Add q0 to Q’.
 Step 3: For each state in Q’, find the possible set of states for each input symbol using transition function of NFA. If this set of states is not in Q’, add it to Q’.  
 Step 4: Final state of DFA will be all states with contain F (final states of NFA)
 
-
+See the example below to understand how the algorithm works:  
+https://www.geeksforgeeks.org/theory-of-computation-conversion-from-nfa-to-dfa/
 
 ## Usage
 ```
@@ -71,9 +72,6 @@ After compiling, the NFA and its according DFA will be drawn.
 - The first line should always contain the number of nodes you wish to add, otherwise an exception will be thrown.  
 - The last line should always specify the accepting state/s.  
 
-## Example
-See the example below to understand how the algorithm works:  
-https://www.geeksforgeeks.org/theory-of-computation-conversion-from-nfa-to-dfa/
 ## Contributing
 Pull requests are welcome. 
 
