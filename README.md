@@ -18,11 +18,11 @@ Step 4: Final state of DFA will be all states with contain F (final states of NF
 
 
 ## Usage
-
+```
 git clone https://github.com/eraldoforgoli/NFAtoDFAConverter  
 import project to your workspace  
 Run As Java Application  
-
+```
 
 ## Application inputs
 Application gets the inputs from *nfa.file* file, which holds all data about NFA automata.  
@@ -77,7 +77,6 @@ See the example below to understand how the algorithm works:
 https://www.geeksforgeeks.org/theory-of-computation-conversion-from-nfa-to-dfa/
 ## Contributing
 Pull requests are welcome. 
-
 
 ## License
 MIT
