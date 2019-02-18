@@ -65,7 +65,8 @@ Several test cases are given in *inputs* folder.
 Edit *nfa.file* file, add your graph as shown above.  
 Run application.    
 After compiling, the NFA and its according DFA will be drawn.  
-Please read the [Notice](README.md/Application inputs) and Application Inputs paragraphs before testing the application.
+Please read the [I'm a reference-style link][Notice]
+ and Application Inputs paragraphs before testing the application.
 
 ## Notice:  
 - The nodes should be named from 0 to n, otherwise an exception will be thrown.  
