@@ -74,6 +74,10 @@ Please read the Notice and Application Inputs paragraphs before testing the appl
 - The first line should always contain the number of nodes you wish to add, otherwise an exception will be thrown.  
 - The last line should always specify the accepting state/s.  
 
+## Pictures
+![alt text](https://ibb.co/XD0L9rP)
+
+
 ## Contributing
 Pull requests are welcome. 
 
