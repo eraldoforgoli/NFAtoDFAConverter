@@ -25,8 +25,8 @@ Run As Java Application
 ```
 
 ## Application inputs
-Application gets the inputs from *nfa.file* file, which holds all data about NFA automata.  
-example nfa.file inputs: 
+Application gets the inputs from  <abbr title="file inside the project">*nfa.file*</abbr> file, which holds all data about NFA automata.  
+Example nfa.file inputs: 
 ```
 4
 start 0 
@@ -40,7 +40,6 @@ start 0
 3 b 2
 final 3
 ```
-
 
 The first line represents the number of states.  
 The second line shows the start node.   
