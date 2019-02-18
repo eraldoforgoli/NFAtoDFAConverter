@@ -75,8 +75,9 @@ Please read the Notice and Application Inputs paragraphs before testing the appl
 - The last line should always specify the accepting state/s.  
 
 ## Pictures
-![nfa](
-http://tinypic.com/r/29xbx8l/9)
+![nfa](http://oi64.tinypic.com/29xbx8l.jpg)  
+![dfa](http://i68.tinypic.com/11l5s8h.jpg)  
+
 
 
 ## Contributing
