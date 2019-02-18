@@ -75,7 +75,7 @@ Please read the Notice and Application Inputs paragraphs before testing the appl
 - The last line should always specify the accepting state/s.  
 
 ## Pictures
-![alt text](https://ibb.co/XD0L9rP)
+![nfa](https://imgur.com/VTv5j9V)
 
 
 ## Contributing
