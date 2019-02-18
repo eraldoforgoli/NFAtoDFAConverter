@@ -15,7 +15,7 @@ Step 2: Add q0 to Q’.
 Step 3: For each state in Q’, find the possible set of states for each input symbol using transition function of NFA. If this set of states is not in Q’, add it to Q’.  
 Step 4: Final state of DFA will be all states with contain F (final states of NFA)
 
-```
+
 
 ## Usage
 
@@ -23,7 +23,7 @@ git clone https://github.com/eraldoforgoli/NFAtoDFAConverter
 import project to your workspace
 Run As Java Application
 
-```
+
 ## Application inputs
 Application gets the inputs from *nfa.file* file, which holds all data about NFA automata.  
 example nfa.file inputs: 
