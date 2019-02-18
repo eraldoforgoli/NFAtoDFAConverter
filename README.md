@@ -19,9 +19,9 @@ Step 4: Final state of DFA will be all states with contain F (final states of NF
 
 ## Usage
 
-git clone https://github.com/eraldoforgoli/NFAtoDFAConverter
-import project to your workspace
-Run As Java Application
+git clone https://github.com/eraldoforgoli/NFAtoDFAConverter  
+import project to your workspace  
+Run As Java Application  
 
 
 ## Application inputs
