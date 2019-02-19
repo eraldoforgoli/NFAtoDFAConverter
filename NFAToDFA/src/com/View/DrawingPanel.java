@@ -20,7 +20,7 @@ public class DrawingPanel extends JPanel {
 		add(startingStateLabel);
 	}
 
-	private Color getColor(int i) {
+	private Color getColor() {
 		return Color.BLACK;
 	}
 
@@ -69,7 +69,7 @@ public class DrawingPanel extends JPanel {
 		g2.setColor(Color.WHITE);
 		g2.fillRect(a.string_pos.x, a.string_pos.y - 10, 10 * mul, 10);
 
-		g2.setColor(getColor(a.id));
+		g2.setColor(getColor());
 		g2.drawString(a.input_symbol, a.string_pos.x, a.string_pos.y);
 	}
 
@@ -79,7 +79,7 @@ public class DrawingPanel extends JPanel {
 		this.makeLineThicker(g2);
 		this.MakeFontItalic(g2);
 
-		g2.setColor(getColor(s.id));
+		g2.setColor(getColor());
 
 		g2.drawArc(s.centre.x - s.radius, s.centre.y - s.radius, 2 * s.radius, 2 * s.radius, 112 - s.theta, -224);
 		g2.drawLine(s.p1.x, s.p1.y, s.end.x, s.end.y);
@@ -95,7 +95,7 @@ public class DrawingPanel extends JPanel {
 		g2.setColor(Color.WHITE);
 		g2.fillRect(s.string_pos.x, s.string_pos.y - 10, 10 * mul, 10);
 
-		g2.setColor(getColor(s.id));
+		g2.setColor(getColor());
 		g2.drawString(s.input_symbol, s.string_pos.x, s.string_pos.y);
 	}
 
@@ -105,7 +105,7 @@ public class DrawingPanel extends JPanel {
 		this.makeLineThicker(g2);
 		this.MakeFontItalic(g2);
 
-		Color c = getColor(a.id);
+		Color c = getColor();
 		g2.setColor(c);
 		for (int i = 1; i < a.pts.size(); i++) {
 			g.drawLine(a.getPointAt(i - 1).x, a.getPointAt(i - 1).y, a.getPointAt(i).x, a.getPointAt(i).y);
