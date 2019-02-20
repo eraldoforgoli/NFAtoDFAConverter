@@ -10,43 +10,43 @@ import com.Models.FinalStatesGroup;
 import com.Models.State;
 
 public class NFAToDFAConverter {
-	private InputStatesHandler inputStatesHandler = new InputStatesHandler();
+	private InputStatesHandler inputStatesHandler;
 	private int startStateID;
 	private Set<String> inputSymbols;
 	private State dfaStatesData[];
 	private FinalStatesGroup finalStates;
-	private LinkedList<String> statesQueue = new LinkedList<>();
-	private Map<String, Integer> statesMap = new HashMap<>();
+	private LinkedList<String> statesQueue;
+	private Map<String, Integer> statesMap;
+	private String dfaString;
+	private String finalState;
+	private int stateCounter;
+	private boolean isFinalState;
+
+	public NFAToDFAConverter() {
+		inputStatesHandler = new InputStatesHandler();
+		startStateID = 0;
+		statesQueue = new LinkedList<>();
+		statesMap = new HashMap<>();
+		dfaString = "";
+		finalState = "final";
+		stateCounter = 1;
+		isFinalState = false;
+	}
 
 	public void convertNFAToDFA() throws IOException {
-
+		
 		getAllInputsFromNFAFile();
 		initiateThreadToDrawNFA();
-
-		// store the output dfa as it is stored in the file
-		String dfaOutputAsInFile = "";
-		dfaOutputAsInFile = dfaOutputAsInFile + "start " + startStateID + "\n";
-
-		/*
-		 * Stores the mapping of every state with its id, each state is stored as a
-		 * string and mapped to its id.
-		 */
-
-		// id of start state is 0
-		statesMap.put(startStateID + "", 0);
-		int stateCounter = 1;
-
-		statesQueue.add(startStateID + "");
-
-		String finalState = "final";
-		boolean isFinalState;
+		initialiseTheDFAString();
+		initialiseStatesMap();
+		initialiseStatesQueue();
 
 		while (statesQueueHasElements()) {
 			// get states as an array of characters
 			char states[] = getStatesFromStatesQueue();
 
 			for (String inputSymbol : inputSymbols) {
-				String tmp = "";
+				String tempState = "";
 				isFinalState = false;
 
 				for (char stateNumberChar : states) {
@@ -57,7 +57,7 @@ public class NFAToDFAConverter {
 						 */
 
 						for (State i : dfaStatesData[stateNumberChar - 48].getTransitions().get(inputSymbol)) {
-							tmp += i.getStateID();
+							tempState += i.getStateID();
 							if (finalStates.contains(i))
 								isFinalState = true;
 						}
@@ -66,30 +66,22 @@ public class NFAToDFAConverter {
 				/*
 				 * Create a new State and map it to a unique and, then add it to queue
 				 */
-				char newStates[] = tmp.toCharArray();
+				char newStates[] = tempState.toCharArray();
 				Arrays.sort(newStates);
-				tmp = new String(newStates);
+				tempState = new String(newStates);
 
-				if (statesMapDoesNotContainKey(tmp)) {
-					statesQueue.add(tmp);
-					statesMap.put(tmp, stateCounter++);
-
-					if (isFinalState) {
-						finalState = finalState + " " + statesMap.get(tmp);
-					}
+				if (statesMapDoesNotContainKey(tempState)) {
+					addStateToStatesMap(tempState, stateCounter++);
+					addStateToStatesQueue(tempState);
+					saveFinalStateIfStateIsFinal(isFinalState, tempState);
 				}
-				dfaOutputAsInFile = dfaOutputAsInFile + statesMap.get(String.valueOf(states)) + " " + inputSymbol + " "
-						+ statesMap.get(tmp) + "\n";
+				addStateAndTransitionIntoToDFAString(tempState, states, inputSymbol);
 			}
 		}
-		dfaOutputAsInFile = stateCounter + "\n" + dfaOutputAsInFile;
-		dfaOutputAsInFile = dfaOutputAsInFile + finalState + "\n";
-
-		System.out.println(dfaOutputAsInFile);
-
-		storeDFAInFile(dfaOutputAsInFile);
+		addFinalStateToDFAString(stateCounter, finalState);
+		System.out.println(dfaString);
+		storeDFAInFile(dfaString);
 		drawDFAFromDFAFile();
-
 	}
 
 	private void getAllInputsFromNFAFile() {
@@ -149,5 +141,42 @@ public class NFAToDFAConverter {
 
 	private void drawDFAFromDFAFile() {
 		new com.View.MainFrameDrawer("dfa", "DFA");
+	}
+
+	private void initialiseTheDFAString() {
+		dfaString = dfaString + "start " + startStateID + "\n";
+	}
+
+	private void initialiseStatesMap() {
+		statesMap.put(startStateID + "", 0);
+	}
+
+	private void initialiseStatesQueue() {
+		statesQueue.add(startStateID + "");
+	}
+
+	private void addStateToStatesQueue(String state) {
+		statesQueue.add(state);
+	}
+
+	private void addStateToStatesMap(String state, int stateNumber) {
+		statesMap.put(state, stateNumber);
+	}
+
+	private void addStateAndTransitionIntoToDFAString(String state, char[] states, String inputSymbol) {
+		dfaString = dfaString + statesMap.get(String.valueOf(states)) + " " + inputSymbol + " " + statesMap.get(state)
+				+ "\n";
+
+	}
+
+	private void addFinalStateToDFAString(int stateCounter, String finalState) {
+		dfaString = stateCounter + "\n" + dfaString;
+		dfaString = dfaString + finalState + "\n";
+	}
+
+	private void saveFinalStateIfStateIsFinal(boolean isFinalState, String state) {
+		if (isFinalState) {
+			finalState = finalState + " " + statesMap.get(state);
+		}
 	}
 }
