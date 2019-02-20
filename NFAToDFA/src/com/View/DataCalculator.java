@@ -24,12 +24,11 @@ public class DataCalculator {
 			e.printStackTrace();
 		}
 		transitionCalculations();
-
 	}
 
 	static Dimension getDimensions() {
 		// set Dimension with (50 + com.graphics.Circle.DIAMETER) as padding
-		return new Dimension(sizeX + 50 + Circle.DIAMETER, sizeY + 50 + Circle.DIAMETER);
+		return new Dimension(sizeX + 50 + Circle.DIAMETER, sizeY + 70 + Circle.DIAMETER);
 	}
 
 	private void getData(String file) throws IOException {

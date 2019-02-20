@@ -16,7 +16,7 @@ public class DrawingPanel extends JPanel {
 		JLabel startingStateLabel = new JLabel("Starting state: " + dataCalculator.getStart());
 		startingStateLabel.setFont(new Font("Dialog", 3, 13));
 
-		startingStateLabel.setBounds(10, 10, 100, 20);
+		startingStateLabel.setBounds(0, 10, 100, 20);
 		add(startingStateLabel);
 	}
 

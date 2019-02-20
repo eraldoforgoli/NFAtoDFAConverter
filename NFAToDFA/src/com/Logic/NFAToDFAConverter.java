@@ -44,9 +44,7 @@ public class NFAToDFAConverter {
 		initialiseStatesQueue();
 
 		while (statesQueueHasElements()) {
-			// get states as an array of characters
 			char states[] = getStatesFromStatesQueue();
-
 			for (String inputSymbol : inputSymbols) {
 				String tempState = "";
 				isFinalState = false;
@@ -64,14 +62,7 @@ public class NFAToDFAConverter {
 						}
 					}
 				}
-
-				/*
-				 * Create a new State and map it to a unique and, then add it to queue
-				 */
-				char newStates[] = tempState.toCharArray();
-				Arrays.sort(newStates);
-				tempState = new String(newStates);
-
+				tempState = sortStates(tempState);
 				if (statesMapDoesNotContainKey(tempState)) {
 					addStateToStatesMap(tempState, stateCounter++);
 					addStateToStatesQueue(tempState);
@@ -168,7 +159,6 @@ public class NFAToDFAConverter {
 	private void addStateAndTransitionIntoToDFAString(String state, char[] states, String inputSymbol) {
 		dfaString = dfaString + statesMap.get(String.valueOf(states)) + " " + inputSymbol + " " + statesMap.get(state)
 				+ "\n";
-
 	}
 
 	private void addFinalStateToDFAString(int stateCounter, String finalState) {
@@ -184,5 +174,11 @@ public class NFAToDFAConverter {
 
 	private boolean stateIsFinal(State state) {
 		return finalStates.contains(state);
+	}
+
+	private String sortStates(String tempState) {
+		char newStates[] = tempState.toCharArray();
+		Arrays.sort(newStates);
+		return new String(newStates);
 	}
 }
