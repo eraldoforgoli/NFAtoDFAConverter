@@ -3,14 +3,14 @@ package com.InputHandlerFromFile;
 import java.io.*;
 import java.util.*;
 
-import com.Models.Group;
+import com.Models.FinalStatesGroup;
 import com.Models.State;
 
 public class InputStatesHandler {
 	private int startStateID;
 	private Set<String> inputSymbols;
 	private State dfaStatesData[];
-	private Group finalStates;
+	private FinalStatesGroup finalStates;
 
 	public int getStartStateID() {
 		return this.startStateID;
@@ -24,7 +24,7 @@ public class InputStatesHandler {
 		return this.dfaStatesData;
 	}
 
-	public Group getFinalStates() {
+	public FinalStatesGroup getFinalStates() {
 		return this.finalStates;
 	}
 
@@ -60,7 +60,7 @@ public class InputStatesHandler {
 			lineInNFAFile = nfaFileReader.readLine();
 		}
 
-		finalStates = new Group(0);
+		finalStates = new FinalStatesGroup(0);
 
 		StringTokenizer st = new StringTokenizer(lineInNFAFile);
 		st.nextToken();

@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 import com.InputHandlerFromFile.InputStatesHandler;
-import com.Models.Group;
+import com.Models.FinalStatesGroup;
 import com.Models.State;
 
 public class NFAToDFAConverter {
@@ -14,30 +14,14 @@ public class NFAToDFAConverter {
 	private int startStateID;
 	private Set<String> inputSymbols;
 	private State dfaStatesData[];
-	private Group finalStates;
+	private FinalStatesGroup finalStates;
+	private LinkedList<String> statesQueue = new LinkedList<>();
+	private Map<String, Integer> statesMap = new HashMap<>();
 
 	public void convertNFAToDFA() throws IOException {
 
-		/*
-		 * Get all the inputs from 'nfa' file
-		 */
-		inputStatesHandler.getAutomataStatesFromFile("nfa");
-		startStateID = inputStatesHandler.getStartStateID();
-		inputSymbols = inputStatesHandler.getInputSymbols();
-		dfaStatesData = inputStatesHandler.getDfaStatesData();
-		finalStates = inputStatesHandler.getFinalStates();
-
-		/*
-		 * Thread ad
-		 * ed to make program execution faster.
-		 */
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				// draw NFA from file "nfa"
-				new com.View.MainFrameDrawer("nfa", "NFA");
-			}
-		}).start();
+		getAllInputsFromNFAFile();
+		initiateThreadToDrawNFA();
 
 		// store the output dfa as it is stored in the file
 		String dfaOutputAsInFile = "";
@@ -47,36 +31,31 @@ public class NFAToDFAConverter {
 		 * Stores the mapping of every state with its id, each state is stored as a
 		 * string and mapped to its id.
 		 */
-		Map<String, Integer> statesMap = new HashMap<>();
 
 		// id of start state is 0
 		statesMap.put(startStateID + "", 0);
 		int stateCounter = 1;
 
-		LinkedList<String> statesQueue = new LinkedList<>();
 		statesQueue.add(startStateID + "");
 
 		String finalState = "final";
 		boolean isFinalState;
 
-		while (!statesQueue.isEmpty()) {
+		while (statesQueueHasElements()) {
 			// get states as an array of characters
-			char states[] = statesQueue.poll().toCharArray();
+			char states[] = getStatesFromStatesQueue();
 
 			for (String inputSymbol : inputSymbols) {
 				String tmp = "";
 				isFinalState = false;
 
-				// for each state as a character ch in the array states
 				for (char stateNumberChar : states) {
-					/*
-					 * If the current state has a transition for the current input symbol
-					 */
-					if (dfaStatesData[stateNumberChar - 48].getTransitions().get(inputSymbol) != null)
+					if (currentStateHasTransitionForInputSymbol(stateNumberChar, inputSymbol))
 						/*
 						 * Concatenate all the states that can be traversed from current state at the
 						 * current input symbol.
 						 */
+
 						for (State i : dfaStatesData[stateNumberChar - 48].getTransitions().get(inputSymbol)) {
 							tmp += i.getStateID();
 							if (finalStates.contains(i))
@@ -90,7 +69,8 @@ public class NFAToDFAConverter {
 				char newStates[] = tmp.toCharArray();
 				Arrays.sort(newStates);
 				tmp = new String(newStates);
-				if (!statesMap.containsKey(tmp)) {
+
+				if (statesMapDoesNotContainKey(tmp)) {
 					statesQueue.add(tmp);
 					statesMap.put(tmp, stateCounter++);
 
@@ -107,12 +87,67 @@ public class NFAToDFAConverter {
 
 		System.out.println(dfaOutputAsInFile);
 
-		// store DFA in a file "dfa"
-		PrintWriter pw = new PrintWriter(new FileWriter("dfa"));
+		storeDFAInFile(dfaOutputAsInFile);
+		drawDFAFromDFAFile();
+
+	}
+
+	private void getAllInputsFromNFAFile() {
+		try {
+			inputStatesHandler.getAutomataStatesFromFile("nfa");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		startStateID = inputStatesHandler.getStartStateID();
+		inputSymbols = inputStatesHandler.getInputSymbols();
+		dfaStatesData = inputStatesHandler.getDfaStatesData();
+		finalStates = inputStatesHandler.getFinalStates();
+	}
+
+	private void initiateThreadToDrawNFA() {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// draw NFA from file "nfa"
+				new com.View.MainFrameDrawer("nfa", "NFA");
+			}
+		}).start();
+	}
+
+	private boolean statesQueueHasElements() {
+		if (statesQueue.isEmpty())
+			return false;
+		return true;
+	}
+
+	private char[] getStatesFromStatesQueue() {
+		return statesQueue.poll().toCharArray();
+	}
+
+	private boolean currentStateHasTransitionForInputSymbol(char stateNumberChar, String inputSymbol) {
+		return dfaStatesData[stateNumberChar - 48].getTransitions().get(inputSymbol) != null;
+	}
+
+	private boolean statesMapDoesNotContainKey(String key) {
+		if (statesMap.containsKey(key))
+			return false;
+		return true;
+	}
+
+	private void storeDFAInFile(String dfaOutputAsInFile) {
+		PrintWriter pw = null;
+		try {
+			pw = new PrintWriter(new FileWriter("dfa"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		pw.println(dfaOutputAsInFile);
 		pw.close();
+	}
 
-		// draw DFA from file "dfa"
+	private void drawDFAFromDFAFile() {
 		new com.View.MainFrameDrawer("dfa", "DFA");
 	}
 }

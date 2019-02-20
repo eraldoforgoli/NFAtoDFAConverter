@@ -2,14 +2,14 @@ package com.Models;
 
 import java.util.ArrayList;
 
-public class Group extends ArrayList<State> {
+public class FinalStatesGroup extends ArrayList<State> {
 	private int groupID;
 
-	public Group(int id) {
+	public FinalStatesGroup(int id) {
 		groupID = id;
 	}
 
-	Group(Group g, int id) {
+	FinalStatesGroup(FinalStatesGroup g, int id) {
 		groupID = id;
 		for (State s : g) {
 			add(s);
