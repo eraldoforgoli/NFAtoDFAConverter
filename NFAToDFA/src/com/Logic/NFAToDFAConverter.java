@@ -21,6 +21,7 @@ public class NFAToDFAConverter {
 	private String finalState;
 	private int stateCounter;
 	private boolean isFinalState;
+	private Map<String, HashSet<State>> tempTransitions;
 
 	public NFAToDFAConverter() {
 		inputStatesHandler = new InputStatesHandler();
@@ -31,10 +32,11 @@ public class NFAToDFAConverter {
 		finalState = "final";
 		stateCounter = 1;
 		isFinalState = false;
+		tempTransitions = new HashMap<>();
 	}
 
 	public void convertNFAToDFA() throws IOException {
-		
+
 		getAllInputsFromNFAFile();
 		initiateThreadToDrawNFA();
 		initialiseTheDFAString();
@@ -48,19 +50,19 @@ public class NFAToDFAConverter {
 			for (String inputSymbol : inputSymbols) {
 				String tempState = "";
 				isFinalState = false;
-
 				for (char stateNumberChar : states) {
-					if (currentStateHasTransitionForInputSymbol(stateNumberChar, inputSymbol))
+					if (currentStateHasTransitionForInputSymbol(stateNumberChar, inputSymbol)) {
 						/*
 						 * Concatenate all the states that can be traversed from current state at the
 						 * current input symbol.
 						 */
-
-						for (State i : dfaStatesData[stateNumberChar - 48].getTransitions().get(inputSymbol)) {
-							tempState += i.getStateID();
-							if (finalStates.contains(i))
+						tempTransitions = dfaStatesData[stateNumberChar - 48].getTransitions();
+						for (State state : tempTransitions.get(inputSymbol)) {
+							tempState += state.getStateID();
+							if (stateIsFinal(state))
 								isFinalState = true;
 						}
+					}
 				}
 
 				/*
@@ -178,5 +180,9 @@ public class NFAToDFAConverter {
 		if (isFinalState) {
 			finalState = finalState + " " + statesMap.get(state);
 		}
+	}
+
+	private boolean stateIsFinal(State state) {
+		return finalStates.contains(state);
 	}
 }
