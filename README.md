@@ -68,7 +68,7 @@ Edit *nfa.file* file, add your graph as shown above.
 Run application.    
 After compiling, the NFA and its according DFA will be drawn.  
   
-Please read the Notice and Application Inputs paragraphs before testing the application.
+Please read the Notice and Application Inputs paragraphs before testing the application.  
 Several test cases are given in *inputs* folder.  
 Copy the inputs from inputs file and paste to *nfa.file* file.
 
