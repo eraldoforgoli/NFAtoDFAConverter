@@ -62,7 +62,7 @@ Start Node | Alphabet | Destination Node
 Several test cases are given in *inputs* folder.  
 Copy the inputs from inputs file and paste to *nfa.file* file.
 ## Output
-![nfa](http://oi64.tinypic.com/29xbx8l.jpg)&nbsp;&nbsp;&nbsp;&nbsp;![dfa](http://i68.tinypic.com/11l5s8h.jpg) 
+![nfa](http://i65.tinypic.com/xkzwuq.jpg)&nbsp;![dfa](http://i64.tinypic.com/il9mky.jpg) 
 
 ## Testing app with custom automata
 Edit *nfa.file* file, add your graph as shown above.  
