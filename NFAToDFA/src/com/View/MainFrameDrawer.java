@@ -7,6 +7,12 @@ import javax.swing.JFrame;
 public class MainFrameDrawer extends JFrame {
 	public MainFrameDrawer(String file, String title) {
 		this.setTitle(title);
+		if (file.equals("dfa")) {
+			this.setLocation(700, 80);
+		} else {
+			this.setLocation(200, 80);
+		}
+
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -15,7 +21,6 @@ public class MainFrameDrawer extends JFrame {
 		});
 		add(new DrawingPanel(file));
 		setSize(DataCalculator.getDimensions());
-
 		setVisible(true);
 	}
 

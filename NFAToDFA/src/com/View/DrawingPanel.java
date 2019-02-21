@@ -14,9 +14,9 @@ public class DrawingPanel extends JPanel {
 		setBackground(Color.WHITE);
 
 		JLabel startingStateLabel = new JLabel("Starting state: " + dataCalculator.getStart());
-		startingStateLabel.setFont(new Font("Dialog", 3, 13));
+		startingStateLabel.setFont(new Font("Dialog", 3, 18));
 
-		startingStateLabel.setBounds(0, 10, 100, 20);
+		startingStateLabel.setBounds(10, 10, 140, 20);
 		add(startingStateLabel);
 	}
 
@@ -137,7 +137,7 @@ public class DrawingPanel extends JPanel {
 
 	public void MakeFontItalic(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		Font myFont = new Font("Dialog", 2, 17);
+		Font myFont = new Font("Dialog", 2, 20);
 		g2.setFont(myFont);
 	}
 }

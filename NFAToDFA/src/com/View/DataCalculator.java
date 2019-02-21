@@ -9,7 +9,7 @@ public class DataCalculator {
 	private int n;
 	private Point centre_main = new Point(0, 0);
 	private Circle states[];
-	private State automata[];
+	private State automataStates[];
 	private List<Arrow> transition;
 	private SelfLoop selfLoops[];
 	private String input[][];
@@ -27,8 +27,8 @@ public class DataCalculator {
 	}
 
 	static Dimension getDimensions() {
-		// set Dimension with (50 + com.graphics.Circle.DIAMETER) as padding
-		return new Dimension(sizeX + 50 + Circle.DIAMETER, sizeY + 70 + Circle.DIAMETER);
+		// set Dimension with (140 + com.graphics.Circle.DIAMETER) as padding
+		return new Dimension(sizeX + 140 + Circle.DIAMETER, sizeY + 140 + Circle.DIAMETER );
 	}
 
 	private void getData(String file) throws IOException {
@@ -40,14 +40,14 @@ public class DataCalculator {
 		}
 
 		n = Integer.parseInt(scan.readLine());
-		automata = new State[n];
+		automataStates = new State[n];
 		input = new String[n][n];
 
 		stateCalculations();
 		int self_loop_count = 0;
 
 		for (int i = 0; i < n; i++)
-			automata[i] = new State(i);
+			automataStates[i] = new State(i);
 
 		String temp;
 		temp = scan.readLine();
@@ -70,7 +70,7 @@ public class DataCalculator {
 			if (from == to)
 				self_loop_count++;
 
-			automata[from].addTransition(at, automata[to]);
+			automataStates[from].addTransition(at, automataStates[to]);
 			temp = scan.readLine();
 		}
 
@@ -86,7 +86,7 @@ public class DataCalculator {
 	}
 
 	State[] getStates() {
-		return automata;
+		return automataStates;
 	}
 
 	private void stateCalculations() {
@@ -95,10 +95,10 @@ public class DataCalculator {
 			radiusRatio++;
 		}
 
-		int radius_main = 2 * Circle.RADIUS * radiusRatio;
+		int radius_main = 2 * Circle.RADIUS * radiusRatio + 30;
 
 		// coordinates of the main circle is set to the radius with 50pts as padding
-		centre_main.x = 50 + radius_main;
+		centre_main.x = 100 + radius_main;
 		centre_main.y = centre_main.x;
 
 		states = new Circle[n];
@@ -130,7 +130,7 @@ public class DataCalculator {
 		double theta;
 		Point p, q1, q2, q;
 		for (int i = 0; i < n; i++) {
-			for (Entry<String, HashSet<State>> e : automata[i].transitions.entrySet()) {
+			for (Entry<String, HashSet<State>> e : automataStates[i].transitions.entrySet()) {
 				for (State state : e.getValue()) {
 					// selfLoop
 					if (i == state.stateID) {
