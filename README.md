@@ -59,8 +59,7 @@ Start Node | Alphabet | Destination Node
 3 | b | 2
 
 0 a 0 -> from node a, given input 0, state goes to node 1.  
-Several test cases are given in *inputs* folder.  
-Copy the inputs from inputs file and paste to *nfa.file* file.
+
 ## Output
 ![nfa](http://i65.tinypic.com/xkzwuq.jpg)&nbsp;![dfa](http://i64.tinypic.com/il9mky.jpg) 
 
@@ -68,7 +67,10 @@ Copy the inputs from inputs file and paste to *nfa.file* file.
 Edit *nfa.file* file, add your graph as shown above.  
 Run application.    
 After compiling, the NFA and its according DFA will be drawn.  
+  
 Please read the Notice and Application Inputs paragraphs before testing the application.
+Several test cases are given in *inputs* folder.  
+Copy the inputs from inputs file and paste to *nfa.file* file.
 
 ## Notice:  
 - The nodes should be named from 0 to n, otherwise an exception will be thrown.  
