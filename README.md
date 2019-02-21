@@ -30,16 +30,16 @@ Application gets the inputs from *nfa.file* file, which holds all data about NFA
 Example nfa.file inputs: 
 ```
 4
-start 0 
-0 a 0
-0 b 1
+start 0
+0 a 1
+0 b 0
 1 a 2
 1 b 1
 2 a 1
 2 b 2
 3 a 1
 3 b 2
-final 3
+final 2
 ```
 
 The first line represents the number of states.  
@@ -50,7 +50,7 @@ The other lines show transition states, for example:
 Start Node | Alphabet | Destination Node
 ------------ | ------------- | -------------
 0 | a | 0
-0 | b | 1
+0 | b | 0
 1 | a | 2
 1 | b | 1
 2 | a | 1
@@ -61,6 +61,8 @@ Start Node | Alphabet | Destination Node
 0 a 0 -> from node a, given input 0, state goes to node 1.  
 Several test cases are given in *inputs* folder.  
 Copy the inputs from inputs file and paste to *nfa.file* file.
+## Output
+![nfa](http://oi64.tinypic.com/29xbx8l.jpg)&nbsp;&nbsp;&nbsp;&nbsp;![dfa](http://i68.tinypic.com/11l5s8h.jpg) 
 
 ## Testing app with custom automata
 Edit *nfa.file* file, add your graph as shown above.  
@@ -73,10 +75,6 @@ Please read the Notice and Application Inputs paragraphs before testing the appl
 - As alphabet you can use any character.  
 - The first line should always contain the number of nodes you wish to add, otherwise an exception will be thrown.  
 - The last line should always specify the accepting state/s.  
-
-## Pictures
-![nfa](http://oi64.tinypic.com/29xbx8l.jpg)&nbsp;&nbsp;&nbsp;&nbsp;![dfa](http://i68.tinypic.com/11l5s8h.jpg)  
-
 
 
 ## Contributing
