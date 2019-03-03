@@ -61,7 +61,7 @@ Start Node | Alphabet | Destination Node
 0 a 0 -> from node a, given input 0, state goes to node 1.  
 
 ## Output
-![nfa](http://i66.tinypic.com/2h6g19v.png) 
+![nfa](http://i65.tinypic.com/xkzwuq.jpg)&nbsp;![dfa](http://i64.tinypic.com/il9mky.jpg) 
 
 ## Testing app with custom automata
 Edit *nfa.file* file, add your graph as shown above.  
